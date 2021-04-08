@@ -8,6 +8,8 @@ import {
   Link
 } from "react-router-dom";
 import NoMatch from './Component\'/NoMatch/NoMatch';
+import ShowAllData from './Component\'/ShowAllData/ShowAllData';
+import Search from './Component\'/Search/Search';
 
 const App = () => {
   return (
@@ -18,6 +20,12 @@ const App = () => {
         </Route>
         <Route path="/addInfo">
           <AddInfo></AddInfo>
+        </Route>
+        <Route path="/allInfo">
+          <ShowAllData></ShowAllData>
+        </Route>
+        <Route path="/search">
+          <Search></Search>
         </Route>
         <Route exact path="/">
           <Home />
