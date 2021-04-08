@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import NavigationBar from '../NavigationBar/NavigationBar';
 
 const AddInfo = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { reset,register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         fetch('http://localhost:5000/addInformation', {
             method: 'POST',
@@ -15,6 +15,7 @@ const AddInfo = () => {
         })
             .then(res => {
                 if (res) {
+                    reset();
                     alert("Data successfully inserted");
                 }
             })
