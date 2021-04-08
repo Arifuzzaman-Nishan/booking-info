@@ -6,7 +6,7 @@ import NavigationBar from '../NavigationBar/NavigationBar';
 const AddInfo = () => {
     const { reset,register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
-        fetch('http://localhost:5000/addInformation', {
+        fetch('https://dry-sands-10727.herokuapp.com/addInformation', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

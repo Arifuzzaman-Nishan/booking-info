@@ -9,9 +9,6 @@ import { useForm } from "react-hook-form";
 
 const DisplayInfo = ({ allInfo: { _id, name, id, email, mobile, district } }) => {
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
-    const onSubmit = data => console.log(data);
 
     const [update, setUpdate] = useState(false);
 
@@ -24,16 +21,16 @@ const DisplayInfo = ({ allInfo: { _id, name, id, email, mobile, district } }) =>
     });
 
 
+    // for delete
     const [hide, setHide] = useState(true);
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/delete/${id}`, {
+        fetch(`https://dry-sands-10727.herokuapp.com/delete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
             .then(result => {
                 if (result) {
                     setHide(false);
-                    // alert('delete');
                 }
             })
     }
@@ -42,14 +39,15 @@ const DisplayInfo = ({ allInfo: { _id, name, id, email, mobile, district } }) =>
         setUpdate(true);
     }
 
+    // set updated data
     const handleUpdate = (e) => {
         const newUpdateValue = { ...updateValue };
 
         newUpdateValue[e.target.name] = e.target.value;
         setUpdateValue(newUpdateValue);
-
     }
 
+    // submit update data
     const handleSubmitUpdate = (_id, id, name, email, mobile, district) => {
 
         if (updateValue.name === '') {
@@ -69,7 +67,7 @@ const DisplayInfo = ({ allInfo: { _id, name, id, email, mobile, district } }) =>
         }
         console.log(updateValue);
 
-        fetch(`http://localhost:5000/update/${_id}`, {
+        fetch(`https://dry-sands-10727.herokuapp.com/update/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

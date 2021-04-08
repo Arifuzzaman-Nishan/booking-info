@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Container, Table } from 'react-bootstrap';
 import DisplayInfo from '../DisplayInfo/DisplayInfo';
 import NavigationBar from '../NavigationBar/NavigationBar';
+import { useForm } from "react-hook-form";
 
 
 const ShowAllData = () => {
-
+    
     const [allInfos, setAllInfos] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/showAllInfo')
+        fetch('https://dry-sands-10727.herokuapp.com/showAllInfo')
             .then(res => res.json())
             .then(data => setAllInfos(data))
     }, [])
